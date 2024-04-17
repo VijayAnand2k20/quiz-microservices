@@ -42,12 +42,15 @@ public class QuizService {
         ResponseEntity<List<QuestionWrapper>> questions = quizInterface.getQuestionsFromId(questionIds);
         return questions;
 
-        // return new ResponseEntity<>(questionsForUser, HttpStatus.OK);
     }
 
     public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
         ResponseEntity<Integer> score = quizInterface.getScore(responses);
         return score;
+    }
+
+    public ResponseEntity<List<Quiz>> getAllQuiz() {
+        return new ResponseEntity<>(quizDao.findAll(), HttpStatus.OK);
     }
 
 }
